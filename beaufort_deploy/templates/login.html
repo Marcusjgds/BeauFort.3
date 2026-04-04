@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Connexion — Boutique de BeauFort</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e0e10;--bg2:#141416;--bg3:#1a1a1e;--border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.12);--text:#f0f0f2;--muted:#888891;--accent:#e8d5a3;--accent2:#c9a96e;--red:#f87171;--radius:8px;}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex;flex-direction:column;}
+header{background:rgba(14,14,16,0.95);border-bottom:1px solid var(--border);padding:0 2rem;}
+.hi{max-width:1280px;margin:0 auto;height:64px;display:flex;align-items:center;}
+.logo-area{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.logo-img{width:40px;height:40px;border-radius:var(--radius);object-fit:cover;}
+.logo-name{font-family:'Syne',sans-serif;font-weight:800;font-size:0.95rem;color:var(--text);line-height:1.2;}
+.logo-name small{display:block;font-size:0.62rem;font-weight:400;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;}
+main{flex:1;display:flex;align-items:center;justify-content:center;padding:2rem;}
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:2.5rem;width:100%;max-width:400px;}
+.card-top{text-align:center;margin-bottom:2rem;}
+.card-top img{width:64px;height:64px;border-radius:12px;object-fit:cover;margin-bottom:1rem;}
+.card-top h1{font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:800;}
+.card-top p{color:var(--muted);font-size:0.85rem;margin-top:0.4rem;}
+label{display:block;font-size:0.72rem;font-weight:600;color:var(--muted);margin-bottom:5px;text-transform:uppercase;letter-spacing:0.5px;}
+input{width:100%;background:var(--bg3);border:1px solid var(--border2);border-radius:var(--radius);color:var(--text);font-family:'Inter',sans-serif;font-size:0.92rem;padding:11px 14px;outline:none;margin-bottom:1rem;}
+input:focus{border-color:var(--accent);}
+.btn{width:100%;padding:12px;background:var(--accent);color:#1a1408;border:none;border-radius:var(--radius);font-family:'Inter',sans-serif;font-weight:700;font-size:0.95rem;cursor:pointer;}
+.btn:hover{background:var(--accent2);}
+.error{background:rgba(248,113,113,0.08);border:1px solid rgba(248,113,113,0.2);border-radius:var(--radius);padding:10px 14px;color:var(--red);font-size:0.82rem;margin-bottom:1rem;}
+footer{text-align:center;padding:1.5rem;color:var(--muted);font-size:0.78rem;}
+footer a{color:var(--muted);text-decoration:none;margin:0 8px;}
+</style>
+</head>
+<body>
+<header>
+  <div class="hi">
+    <a href="/" class="logo-area">
+      {% if site_logo %}<img src="/uploads/logos/{{ site_logo }}" class="logo-img">
+      {% else %}<img src="/static/logo.png" class="logo-img">{% endif %}
+      <div class="logo-name">Boutique de BeauFort<small>Modèles Roblox</small></div>
+    </a>
+  </div>
+</header>
+<main>
+  <div class="card">
+    <div class="card-top">
+      {% if site_logo %}<img src="/uploads/logos/{{ site_logo }}">
+      {% else %}<img src="/static/logo.png">{% endif %}
+      <h1>Connexion</h1>
+      <p>Entre tes identifiants pour accéder au site</p>
+    </div>
+    {% if error %}<div class="error">{{ error }}</div>{% endif %}
+    <form method="POST" action="/login">
+      <label>Pseudo</label>
+      <input type="text" name="username" placeholder="Ton pseudo" required autofocus>
+      <label>Mot de passe</label>
+      <input type="password" name="password" placeholder="••••••••" required>
+      <button type="submit" class="btn">Se connecter</button>
+    </form>
+  </div>
+</main>
+<footer>
+  <a href="/privacy">Confidentialité</a>
+  <a href="/terms">Conditions</a>
+</footer>
+</body>
+</html>

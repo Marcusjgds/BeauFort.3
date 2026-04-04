@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard Admin — Boutique de BeauFort</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e0e10;--bg2:#141416;--bg3:#1a1a1e;--border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.12);--text:#f0f0f2;--muted:#888891;--accent:#e8d5a3;--accent2:#c9a96e;--accent-s:rgba(232,213,163,0.08);--green:#4ade80;--green-s:rgba(74,222,128,0.1);--red:#f87171;--red-s:rgba(248,113,113,0.08);--gold:#f59e0b;--radius:8px;--radius-lg:12px;}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-size:14px;min-height:100vh;}
+header{background:rgba(14,14,16,0.95);border-bottom:1px solid var(--border);padding:0 2rem;position:sticky;top:0;z-index:100;}
+.hi{max-width:1200px;margin:0 auto;height:60px;display:flex;align-items:center;justify-content:space-between;}
+.logo{font-family:'Syne',sans-serif;font-weight:800;font-size:0.95rem;color:var(--text);}
+.logo span{color:var(--accent);}
+.nav-links{display:flex;align-items:center;gap:12px;}
+.badge-admin{background:var(--accent-s);border:1px solid rgba(232,213,163,0.2);color:var(--accent);font-size:0.72rem;font-weight:700;border-radius:999px;padding:3px 10px;letter-spacing:0.5px;text-transform:uppercase;}
+.btn{display:inline-flex;align-items:center;gap:6px;font-family:'Inter',sans-serif;font-weight:600;font-size:0.82rem;border:none;border-radius:var(--radius);cursor:pointer;padding:7px 14px;transition:all 0.15s;text-decoration:none;}
+.btn-primary{background:var(--accent);color:#1a1408;}
+.btn-primary:hover{background:var(--accent2);}
+.btn-danger{background:var(--red-s);color:var(--red);border:1px solid rgba(248,113,113,0.2);}
+.btn-danger:hover{background:rgba(248,113,113,0.15);}
+.btn-ghost{background:transparent;color:var(--muted);border:1px solid var(--border);}
+.btn-ghost:hover{color:var(--red);border-color:rgba(248,113,113,0.3);}
+.btn-sm{padding:5px 11px;font-size:0.78rem;}
+.container{max-width:1200px;margin:0 auto;padding:2rem;}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:2rem;}
+.stat-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.25rem;}
+.stat-n{font-family:'Syne',sans-serif;font-size:2rem;font-weight:800;color:var(--text);}
+.stat-l{font-size:0.78rem;color:var(--muted);margin-top:3px;}
+.section{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;margin-bottom:1.5rem;}
+.section-header{padding:1rem 1.25rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
+.section-title{font-family:'Syne',sans-serif;font-size:0.9rem;font-weight:700;}
+.section-body{padding:1.25rem;}
+.toggle-row{display:flex;align-items:center;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--border);}
+.toggle-row:last-child{border-bottom:none;}
+.toggle-label{font-weight:600;font-size:0.88rem;}
+.toggle-sub{font-size:0.78rem;color:var(--muted);margin-top:2px;}
+.toggle{position:relative;width:44px;height:24px;flex-shrink:0;}
+.toggle input{opacity:0;width:0;height:0;}
+.toggle-slider{position:absolute;inset:0;background:var(--bg3);border:1px solid var(--border2);border-radius:999px;cursor:pointer;transition:0.2s;}
+.toggle-slider::before{content:'';position:absolute;width:16px;height:16px;left:3px;top:3px;background:var(--muted);border-radius:50%;transition:0.2s;}
+.toggle input:checked+.toggle-slider{background:var(--accent-s);border-color:var(--accent);}
+.toggle input:checked+.toggle-slider::before{transform:translateX(20px);background:var(--accent);}
+.msg-input{width:100%;background:var(--bg3);border:1px solid var(--border2);border-radius:var(--radius);color:var(--text);font-family:'Inter',sans-serif;font-size:0.85rem;padding:8px 12px;outline:none;margin-top:6px;}
+.msg-input:focus{border-color:var(--accent);}
+.add-user-row{display:flex;gap:8px;margin-bottom:1rem;}
+.add-user-row input{flex:1;background:var(--bg3);border:1px solid var(--border2);border-radius:var(--radius);color:var(--text);font-family:'Inter',sans-serif;font-size:0.88rem;padding:8px 12px;outline:none;}
+.add-user-row input:focus{border-color:var(--accent);}
+.user-list{display:flex;flex-direction:column;gap:6px;}
+.user-item{display:flex;align-items:center;justify-content:space-between;background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius);padding:10px 14px;}
+.user-name{font-weight:600;font-size:0.88rem;}
+.user-date{font-size:0.72rem;color:var(--muted);margin-top:2px;}
+.model-list{display:flex;flex-direction:column;gap:8px;}
+.model-item{display:flex;align-items:center;justify-content:space-between;background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius);padding:10px 14px;}
+.model-info-row{flex:1;}
+.model-name-row{font-weight:600;font-size:0.88rem;}
+.model-meta{font-size:0.72rem;color:var(--muted);margin-top:2px;}
+.badge{font-size:0.68rem;font-weight:600;border-radius:999px;padding:2px 8px;}
+.badge-free{background:var(--green-s);color:var(--green);}
+.badge-paid{background:rgba(245,158,11,0.1);color:var(--gold);}
+.empty{text-align:center;padding:2rem;color:var(--muted);font-size:0.88rem;}
+.toast{position:fixed;bottom:1.5rem;right:1.5rem;background:var(--bg3);color:var(--text);border:1px solid var(--border2);border-radius:var(--radius-lg);padding:10px 16px;font-size:0.85rem;font-weight:500;box-shadow:0 8px 24px rgba(0,0,0,0.5);transform:translateY(80px);opacity:0;transition:all 0.3s;z-index:999;}
+.toast.show{transform:translateY(0);opacity:1;}
+.logo-section{display:flex;align-items:center;gap:12px;}
+.current-logo{width:48px;height:48px;border-radius:var(--radius);object-fit:cover;border:1px solid var(--border2);}
+@media(max-width:700px){.grid-3{grid-template-columns:1fr 1fr;}}
+</style>
+</head>
+<body>
+<header>
+  <div class="hi">
+    <span class="logo">BF <span>Admin</span></span>
+    <div class="nav-links">
+      <span class="badge-admin">Admin</span>
+      <a href="/" class="btn btn-ghost btn-sm">Voir le site</a>
+      <a href="/logout" class="btn btn-ghost btn-sm">Déconnexion</a>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- Stats -->
+  <div class="grid-3">
+    <div class="stat-card">
+      <div class="stat-n">{{ models|length }}</div>
+      <div class="stat-l">Modèles publiés</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-n">{{ users|length }}</div>
+      <div class="stat-l">Utilisateurs autorisés</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-n" style="color:{% if maintenance=='1' %}#f59e0b{% elif site_closed=='1' %}#f87171{% else %}#4ade80{% endif %}">
+        {% if site_closed=='1' %}Fermé{% elif maintenance=='1' %}Maint.{% else %}Live{% endif %}
+      </div>
+      <div class="stat-l">État du site</div>
+    </div>
+  </div>
+
+  <!-- Paramètres site -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-title">⚙️ Paramètres du site</span>
+      <button class="btn btn-primary btn-sm" onclick="saveSettings()">Sauvegarder</button>
+    </div>
+    <div class="section-body">
+
+      <div class="toggle-row">
+        <div>
+          <div class="toggle-label">🔧 Mode maintenance</div>
+          <div class="toggle-sub">Les visiteurs voient une page "maintenance en cours"</div>
+          <input class="msg-input" id="maintenance_msg" placeholder="Message de maintenance..." value="{{ maintenance_msg }}">
+        </div>
+        <label class="toggle">
+          <input type="checkbox" id="toggle-maintenance" {% if maintenance=='1' %}checked{% endif %}>
+          <span class="toggle-slider"></span>
+        </label>
+      </div>
+
+      <div class="toggle-row">
+        <div>
+          <div class="toggle-label">🔒 Site fermé</div>
+          <div class="toggle-sub">Personne ne peut accéder au site (sauf admin)</div>
+          <input class="msg-input" id="site_closed_msg" placeholder="Message site fermé..." value="{{ site_closed_msg }}">
+        </div>
+        <label class="toggle">
+          <input type="checkbox" id="toggle-closed" {% if site_closed=='1' %}checked{% endif %}>
+          <span class="toggle-slider"></span>
+        </label>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Logo -->
+  <div class="section">
+    <div class="section-header"><span class="section-title">🎨 Logo du site</span></div>
+    <div class="section-body">
+      <div class="logo-section">
+        {% if site_logo %}
+          <img src="/uploads/logos/{{ site_logo }}" class="current-logo" alt="Logo actuel">
+        {% else %}
+          <img src="/static/logo.png" class="current-logo" alt="Logo par défaut">
+        {% endif %}
+        <div>
+          <input type="file" id="logo-file" accept="image/*" style="display:none" onchange="uploadLogo()">
+          <button class="btn btn-primary btn-sm" onclick="document.getElementById('logo-file').click()">Changer le logo</button>
+          <div style="font-size:0.75rem;color:var(--muted);margin-top:5px">PNG, JPG ou SVG recommandé</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Utilisateurs autorisés -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-title">👥 Utilisateurs autorisés à publier</span>
+      <span style="font-size:0.78rem;color:var(--muted)">{{ users|length }} utilisateur(s)</span>
+    </div>
+    <div class="section-body">
+      <div class="add-user-row">
+        <input type="text" id="new-username" placeholder="Pseudo Roblox exact...">
+        <button class="btn btn-primary" onclick="addUser()">+ Ajouter</button>
+      </div>
+      <div class="user-list" id="user-list">
+        {% if users %}
+          {% for u in users %}
+          <div class="user-item" id="user-{{ u.id }}">
+            <div>
+              <div class="user-name">{{ u.roblox_username }}</div>
+              <div class="user-date">Ajouté le {{ u.added_at[:10] }}</div>
+            </div>
+            <button class="btn btn-danger btn-sm" onclick="removeUser({{ u.id }}, '{{ u.roblox_username }}')">Retirer</button>
+          </div>
+          {% endfor %}
+        {% else %}
+          <div class="empty" id="users-empty">Aucun utilisateur autorisé pour l'instant.</div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <!-- Modèles -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-title">📦 Tous les modèles</span>
+      <span style="font-size:0.78rem;color:var(--muted)">{{ models|length }} modèle(s)</span>
+    </div>
+    <div class="section-body">
+      <div class="model-list" id="model-list">
+        {% if models %}
+          {% for m in models %}
+          <div class="model-item" id="model-{{ m.id }}">
+            <div class="model-info-row">
+              <div class="model-name-row">
+                {{ m.name }}
+                {% if m.price_type == 'free' %}<span class="badge badge-free">Gratuit</span>
+                {% else %}<span class="badge badge-paid">R$ {{ m.price }}</span>{% endif %}
+              </div>
+              <div class="model-meta">par {{ m.author }} · {{ m.category }} · {{ m.downloads }} téléchargements · {{ m.created_at[:10] }}</div>
+            </div>
+            <button class="btn btn-danger btn-sm" onclick="deleteModel({{ m.id }}, '{{ m.name }}')">Supprimer</button>
+          </div>
+          {% endfor %}
+        {% else %}
+          <div class="empty">Aucun modèle publié.</div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+function toast(msg, ok=true) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.style.borderColor = ok ? 'rgba(74,222,128,0.3)' : 'rgba(248,113,113,0.3)';
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+async function saveSettings() {
+  const data = {
+    maintenance: document.getElementById('toggle-maintenance').checked ? '1' : '0',
+    site_closed: document.getElementById('toggle-closed').checked ? '1' : '0',
+    maintenance_msg: document.getElementById('maintenance_msg').value,
+    site_closed_msg: document.getElementById('site_closed_msg').value,
+  };
+  const r = await fetch('/admin/settings', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(data)});
+  const d = await r.json();
+  if (d.success) toast('✓ Paramètres sauvegardés !');
+  else toast('Erreur', false);
+}
+
+async function addUser() {
+  const input = document.getElementById('new-username');
+  const username = input.value.trim();
+  if (!username) return;
+  const fd = new FormData(); fd.append('username', username);
+  const r = await fetch('/admin/add_user', {method:'POST', body:fd});
+  const d = await r.json();
+  if (d.success) {
+    input.value = '';
+    const empty = document.getElementById('users-empty');
+    if (empty) empty.remove();
+    const item = document.createElement('div');
+    item.className = 'user-item'; item.id = 'user-new';
+    item.innerHTML = `<div><div class="user-name">${username}</div><div class="user-date">Ajouté maintenant</div></div><button class="btn btn-danger btn-sm" onclick="removeUser(0,'${username}')">Retirer</button>`;
+    document.getElementById('user-list').prepend(item);
+    toast(`✓ ${username} ajouté !`);
+  } else toast(d.error || 'Erreur', false);
+}
+
+async function removeUser(uid, name) {
+  if (!confirm(`Retirer ${name} ?`)) return;
+  const r = await fetch(`/admin/remove_user/${uid}`, {method:'POST'});
+  const d = await r.json();
+  if (d.success) {
+    document.getElementById(`user-${uid}`)?.remove();
+    toast(`✓ ${name} retiré`);
+  }
+}
+
+async function deleteModel(mid, name) {
+  if (!confirm(`Supprimer "${name}" ?`)) return;
+  const r = await fetch(`/admin/delete_model/${mid}`, {method:'POST'});
+  const d = await r.json();
+  if (d.success) {
+    document.getElementById(`model-${mid}`)?.remove();
+    toast(`✓ "${name}" supprimé`);
+  }
+}
+
+async function uploadLogo() {
+  const lf = document.getElementById('logo-file').files[0];
+  if (!lf) return;
+  const fd = new FormData(); fd.append('logo', lf);
+  const r = await fetch('/upload_logo', {method:'POST', body:fd});
+  const d = await r.json();
+  if (d.success) { toast('✓ Logo mis à jour !'); setTimeout(()=>location.reload(), 1000); }
+  else toast('Erreur logo', false);
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Boutique de BeauFort — Modèles Roblox</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e0e10;--bg2:#141416;--bg3:#1a1a1e;--border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.12);--text:#f0f0f2;--muted:#888891;--hint:#555560;--accent:#e8d5a3;--accent2:#c9a96e;--accent-s:rgba(232,213,163,0.08);--green:#4ade80;--green-s:rgba(74,222,128,0.1);--gold:#f59e0b;--gold-s:rgba(245,158,11,0.1);--red:#f87171;--radius:8px;--radius-lg:12px;--radius-xl:16px;}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-size:14px;line-height:1.6;min-height:100vh;}
+header{background:rgba(14,14,16,0.95);border-bottom:1px solid var(--border);backdrop-filter:blur(20px);position:sticky;top:0;z-index:100;padding:0 2rem;}
+.hi{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;gap:1.5rem;}
+.logo-area{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.logo-img{width:40px;height:40px;border-radius:var(--radius);object-fit:cover;}
+.logo-name{font-family:'Syne',sans-serif;font-weight:800;font-size:0.95rem;color:var(--text);line-height:1.2;}
+.logo-name small{display:block;font-size:0.62rem;font-weight:400;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;}
+.nav-right{display:flex;align-items:center;gap:10px;}
+.user-chip{display:flex;align-items:center;gap:8px;background:var(--bg3);border:1px solid var(--border2);border-radius:999px;padding:5px 14px 5px 5px;}
+.avatar{width:32px;height:32px;border-radius:50%;object-fit:cover;}
+.avatar-ph{width:32px;height:32px;border-radius:50%;background:var(--accent2);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;color:#1a1408;}
+.username{font-weight:600;font-size:0.85rem;}
+.badge-admin{background:var(--accent-s);border:1px solid rgba(232,213,163,0.2);color:var(--accent);font-size:0.68rem;font-weight:700;border-radius:999px;padding:2px 8px;}
+.btn{display:inline-flex;align-items:center;gap:7px;font-family:'Inter',sans-serif;font-weight:600;font-size:0.85rem;border:none;border-radius:var(--radius);cursor:pointer;padding:9px 18px;transition:all 0.15s;text-decoration:none;white-space:nowrap;}
+.btn-primary{background:var(--accent);color:#1a1408;}
+.btn-primary:hover{background:var(--accent2);}
+.btn-secondary{background:var(--bg3);color:var(--text);border:1px solid var(--border2);}
+.btn-secondary:hover{background:var(--bg2);}
+.btn-ghost{background:transparent;color:var(--muted);border:1px solid var(--border);}
+.btn-ghost:hover{color:var(--red);border-color:rgba(248,113,113,0.3);}
+.btn-sm{padding:6px 13px;font-size:0.8rem;}
+.hero{position:relative;overflow:hidden;padding:5rem 2rem 4rem;background:var(--bg2);border-bottom:1px solid var(--border);}
+.hero::before{content:'';position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:700px;height:350px;background:radial-gradient(ellipse,rgba(232,213,163,0.05) 0%,transparent 70%);pointer-events:none;}
+.hero-inner{max-width:680px;margin:0 auto;text-align:center;position:relative;}
+.hero-tag{display:inline-flex;align-items:center;gap:7px;background:var(--accent-s);border:1px solid rgba(232,213,163,0.2);border-radius:999px;padding:5px 14px;font-size:0.72rem;font-weight:600;color:var(--accent);letter-spacing:0.8px;text-transform:uppercase;margin-bottom:1.5rem;}
+.hero h1{font-family:'Syne',sans-serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:800;line-height:1.1;letter-spacing:-1px;margin-bottom:1.2rem;}
+.hero h1 em{font-style:normal;color:var(--accent);}
+.hero p{color:var(--muted);font-size:1rem;max-width:480px;margin:0 auto 2rem;}
+.hero-cta{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
+.hero-stats{display:flex;justify-content:center;gap:3rem;margin-top:3.5rem;padding-top:2.5rem;border-top:1px solid var(--border);}
+.stat-n{font-family:'Syne',sans-serif;font-size:2rem;font-weight:800;color:var(--text);letter-spacing:-1px;}
+.stat-l{font-size:0.75rem;color:var(--muted);margin-top:2px;}
+.container{max-width:1280px;margin:0 auto;padding:2.5rem 2rem;}
+.layout{display:grid;grid-template-columns:290px 1fr;gap:2rem;align-items:start;}
+.panel{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-xl);overflow:hidden;margin-bottom:1rem;}
+.panel-header{padding:1rem 1.25rem;border-bottom:1px solid var(--border);}
+.panel-title{font-family:'Syne',sans-serif;font-size:0.85rem;font-weight:700;color:var(--text);}
+.panel-body{padding:1.25rem;}
+.form-group{margin-bottom:1rem;}
+label{display:block;font-size:0.7rem;font-weight:600;color:var(--muted);margin-bottom:5px;text-transform:uppercase;letter-spacing:0.5px;}
+input[type="text"],input[type="number"],textarea,select{width:100%;background:var(--bg3);border:1px solid var(--border2);border-radius:var(--radius);color:var(--text);font-family:'Inter',sans-serif;font-size:0.88rem;padding:9px 12px;outline:none;transition:border-color 0.15s;-webkit-appearance:none;}
+input:focus,textarea:focus,select:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(232,213,163,0.07);}
+select option{background:var(--bg3);}
+textarea{resize:vertical;min-height:70px;}
+.price-toggle{display:flex;gap:6px;margin-bottom:8px;}
+.ptgl{flex:1;padding:8px;border-radius:var(--radius);border:1px solid var(--border2);background:var(--bg3);color:var(--muted);font-family:'Inter',sans-serif;font-weight:600;font-size:0.8rem;cursor:pointer;transition:all 0.15s;text-align:center;}
+.ptgl.active-free{border-color:var(--green);color:var(--green);background:var(--green-s);}
+.ptgl.active-paid{border-color:var(--gold);color:var(--gold);background:var(--gold-s);}
+#price-wrap{display:none;}
+.file-drop{border:1.5px dashed var(--border2);border-radius:var(--radius);padding:1.2rem;text-align:center;cursor:pointer;transition:all 0.15s;position:relative;background:var(--bg3);}
+.file-drop:hover{border-color:var(--accent);background:var(--accent-s);}
+.file-drop input[type="file"]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;}
+.file-drop-icon{font-size:1.4rem;margin-bottom:4px;}
+.file-drop-label{font-size:0.78rem;color:var(--muted);}
+.file-drop-label b{color:var(--accent);}
+.file-name-display{font-size:0.72rem;color:var(--accent);margin-top:4px;font-weight:500;}
+.msg{padding:8px 12px;border-radius:var(--radius);font-size:0.8rem;font-weight:500;margin-top:8px;display:none;}
+.msg.ok{background:rgba(74,222,128,0.07);border:1px solid rgba(74,222,128,0.2);color:var(--green);}
+.msg.err{background:rgba(248,113,113,0.07);border:1px solid rgba(248,113,113,0.2);color:var(--red);}
+.connect-panel{text-align:center;}
+.connect-panel p{color:var(--muted);font-size:0.85rem;margin-bottom:1.2rem;line-height:1.6;}
+.section-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;}
+.section-title{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:700;}
+.section-count{font-size:0.78rem;color:var(--muted);background:var(--bg3);border:1px solid var(--border);border-radius:999px;padding:3px 10px;}
+.models-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;}
+.model-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-xl);overflow:hidden;transition:all 0.2s;cursor:pointer;}
+.model-card:hover{border-color:var(--border2);transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,0.5);}
+.model-thumb{width:100%;height:150px;object-fit:cover;display:block;}
+.model-thumb-ph{width:100%;height:150px;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:2.5rem;}
+.model-info{padding:14px;}
+.model-name{font-family:'Syne',sans-serif;font-weight:700;font-size:0.9rem;margin-bottom:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.model-author{font-size:0.75rem;color:var(--muted);margin-bottom:10px;}
+.model-footer{display:flex;align-items:center;justify-content:space-between;}
+.badge{font-size:0.7rem;font-weight:600;border-radius:999px;padding:3px 10px;}
+.badge-free{background:var(--green-s);color:var(--green);border:1px solid rgba(74,222,128,0.2);}
+.badge-paid{background:var(--gold-s);color:var(--gold);border:1px solid rgba(245,158,11,0.2);}
+.badge-cat{font-size:0.68rem;font-weight:500;color:var(--hint);background:var(--bg3);border:1px solid var(--border);border-radius:999px;padding:3px 9px;}
+.empty{grid-column:1/-1;text-align:center;padding:4rem 2rem;color:var(--muted);}
+.empty-icon{font-size:2.5rem;margin-bottom:1rem;opacity:0.3;}
+#toast{position:fixed;bottom:1.5rem;right:1.5rem;background:var(--bg3);color:var(--text);border:1px solid var(--border2);border-radius:var(--radius-lg);padding:12px 18px;font-size:0.85rem;font-weight:500;box-shadow:0 8px 24px rgba(0,0,0,0.5);transform:translateY(80px);opacity:0;transition:all 0.3s;z-index:999;}
+#toast.show{transform:translateY(0);opacity:1;}
+footer{border-top:1px solid var(--border);padding:2rem;text-align:center;color:var(--hint);font-size:0.78rem;margin-top:4rem;}
+footer a{color:var(--muted);text-decoration:none;margin:0 8px;}
+footer a:hover{color:var(--accent);}
+@media(max-width:900px){.layout{grid-template-columns:1fr}.hero-stats{gap:2rem}header{padding:0 1rem}.container{padding:2rem 1rem}}
+</style>
+</head>
+<body>
+<header>
+  <div class="hi">
+    <a class="logo-area" href="/">
+      {% if site_logo %}<img src="/uploads/logos/{{ site_logo }}" class="logo-img" alt="Logo">
+      {% else %}<img src="/static/logo.png" class="logo-img" alt="Logo">{% endif %}
+      <div class="logo-name">Boutique de BeauFort<small>Modèles Roblox</small></div>
+    </a>
+    <div class="nav-right">
+      {% if logged_in %}
+        {% if is_admin %}<span class="badge-admin">Admin</span>{% endif %}
+        <div class="user-chip">
+          {% if avatar %}<img src="{{ avatar }}" class="avatar" alt="avatar" onerror="this.style.display='none'">
+          {% else %}<div class="avatar-ph">{{ username[0]|upper }}</div>{% endif %}
+          <span class="username">{{ username }}</span>
+        </div>
+        {% if is_admin %}<a href="/admin/dashboard" class="btn btn-secondary btn-sm">Dashboard</a>{% endif %}
+        <a href="/logout" class="btn btn-ghost btn-sm">Déconnexion</a>
+      {% else %}
+        <a href="/login" class="btn btn-primary btn-sm">Se connecter</a>
+      {% endif %}
+    </div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">🎮 Marketplace Roblox</div>
+    <h1>Des modèles de<br><em>qualité supérieure</em></h1>
+    <p>Découvre et partage les meilleurs modèles .rbxmx pour tes jeux Roblox.</p>
+    <div class="hero-cta">
+      {% if not logged_in %}
+        <a href="/login" class="btn btn-primary">Commencer gratuitement →</a>
+        <a href="#models" class="btn btn-secondary">Voir les modèles</a>
+      {% else %}
+        <a href="#models" class="btn btn-primary">Voir les modèles →</a>
+      {% endif %}
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-n" id="stat-models">{{ models|length }}</div><div class="stat-l">Modèles</div></div>
+      <div class="stat"><div class="stat-n">100%</div><div class="stat-l">Gratuit</div></div>
+      <div class="stat"><div class="stat-n">∞</div><div class="stat-l">Creators</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="layout">
+    <aside>
+      {% if logged_in and (can_upload or is_admin) %}
+      <div class="panel">
+        <div class="panel-header"><div class="panel-title">Publier un modèle</div></div>
+        <div class="panel-body">
+          <div class="form-group"><label>Nom</label><input type="text" id="model-name" placeholder="Nom du modèle"></div>
+          <div class="form-group"><label>Description</label><textarea id="model-desc" placeholder="Décris ton modèle..."></textarea></div>
+          <div class="form-group"><label>Catégorie</label><select id="model-cat"><option>Buildings</option><option>Vehicles</option><option>Characters</option><option>Tools</option><option>Nature</option><option>UI</option><option>Scripts</option><option>Other</option></select></div>
+          <div class="form-group">
+            <label>Prix</label>
+            <div class="price-toggle"><button class="ptgl active-free" id="btn-free" onclick="setPrice('free')">✓ Gratuit</button><button class="ptgl" id="btn-paid" onclick="setPrice('paid')">R$ Payant</button></div>
+            <div id="price-wrap"><input type="number" id="model-price" placeholder="Prix en Robux" min="1"></div>
+          </div>
+          <div class="form-group"><label>Fichier .rbxm / .rbxmx</label><div class="file-drop"><input type="file" id="model-file" accept=".rbxm,.rbxmx" onchange="setFileName('model-file','fn-model')"><div class="file-drop-icon">📁</div><div class="file-drop-label">Glisse ici ou <b>clique</b></div><div class="file-name-display" id="fn-model"></div></div></div>
+          <div class="form-group"><label>Miniature (optionnel)</label><div class="file-drop"><input type="file" id="thumb-file" accept="image/*" onchange="setFileName('thumb-file','fn-thumb')"><div class="file-drop-icon">🖼️</div><div class="file-drop-label">PNG / JPG</div><div class="file-name-display" id="fn-thumb"></div></div></div>
+          <button class="btn btn-primary" style="width:100%;justify-content:center" onclick="uploadModel()">Publier →</button>
+          <div class="msg" id="upload-msg"></div>
+        </div>
+      </div>
+      {% elif logged_in %}
+      <div class="panel">
+        <div class="panel-header"><div class="panel-title">Publier</div></div>
+        <div class="panel-body" style="text-align:center;color:var(--muted);font-size:0.85rem;line-height:1.6;">
+          Tu n'es pas encore autorisé à publier des modèles.<br>Contacte un administrateur pour obtenir l'accès.
+        </div>
+      </div>
+      {% else %}
+      <div class="panel">
+        <div class="panel-header"><div class="panel-title">Connexion</div></div>
+        <div class="panel-body connect-panel">
+          <p>Connecte-toi avec ton compte Roblox pour accéder à la plateforme.</p>
+          <a href="/login" class="btn btn-primary" style="width:100%;justify-content:center">Se connecter →</a>
+        </div>
+      </div>
+      {% endif %}
+    </aside>
+
+    <section id="models">
+      <div class="section-header">
+        <div class="section-title">Modèles disponibles</div>
+        <div class="section-count" id="models-count">{{ models|length }} modèle{{ 's' if models|length != 1 }}</div>
+      </div>
+      <div class="models-grid" id="models-grid">
+        {% if models %}
+          {% for m in models %}
+          <div class="model-card" onclick="downloadModel({{ m.id }}, '{{ m.price_type }}')">
+            {% if m.thumbnail %}<img src="/uploads/models/{{ m.thumbnail }}" class="model-thumb" alt="{{ m.name }}">
+            {% else %}<div class="model-thumb-ph">📦</div>{% endif %}
+            <div class="model-info">
+              <div class="model-name">{{ m.name }}</div>
+              <div class="model-author">par {{ m.author }}</div>
+              <div class="model-footer">
+                {% if m.price_type == 'free' %}<span class="badge badge-free">Gratuit</span>
+                {% else %}<span class="badge badge-paid">R$ {{ m.price }}</span>{% endif %}
+                <span class="badge-cat">{{ m.category }}</span>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        {% else %}
+          <div class="empty"><div class="empty-icon">📦</div><p>Aucun modèle pour l'instant.<br>Sois le premier à publier !</p></div>
+        {% endif %}
+      </div>
+    </section>
+  </div>
+</div>
+
+<footer>
+  <p>© 2025 Boutique de BeauFort</p>
+  <p style="margin-top:8px"><a href="/privacy">Confidentialité</a><a href="/terms">Conditions</a></p>
+</footer>
+
+<div id="toast"></div>
+<script>
+let priceType='free';
+function setPrice(t){priceType=t;document.getElementById('btn-free').className='ptgl'+(t==='free'?' active-free':'');document.getElementById('btn-paid').className='ptgl'+(t==='paid'?' active-paid':'');document.getElementById('price-wrap').style.display=t==='paid'?'block':'none';}
+function setFileName(a,b){const f=document.getElementById(a).files[0];if(f)document.getElementById(b).textContent=f.name;}
+function showMsg(id,text,type){const el=document.getElementById(id);el.textContent=text;el.className='msg '+type;el.style.display='block';setTimeout(()=>el.style.display='none',4000);}
+function toast(text){const t=document.getElementById('toast');t.textContent=text;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3000);}
+async function uploadModel(){
+  const name=document.getElementById('model-name').value.trim();
+  const mf=document.getElementById('model-file').files[0];
+  if(!name){showMsg('upload-msg','Nom requis','err');return;}
+  if(!mf){showMsg('upload-msg','Fichier .rbxmx requis','err');return;}
+  const fd=new FormData();
+  fd.append('model_name',name);fd.append('description',document.getElementById('model-desc').value);
+  fd.append('category',document.getElementById('model-cat').value);fd.append('price_type',priceType);
+  fd.append('price',document.getElementById('model-price')?.value||'0');fd.append('model_file',mf);
+  const tf=document.getElementById('thumb-file').files[0];if(tf)fd.append('thumbnail',tf);
+  const r=await fetch('/upload_model',{method:'POST',body:fd});const d=await r.json();
+  if(d.success){showMsg('upload-msg','✓ Modèle publié !','ok');toast('Modèle publié !');addCard(d.model);document.getElementById('model-name').value='';document.getElementById('model-desc').value='';}
+  else showMsg('upload-msg',d.error,'err');
+}
+function addCard(m){
+  const grid=document.getElementById('models-grid');
+  const empty=grid.querySelector('.empty');if(empty)empty.remove();
+  const price=m.price_type==='free'?`<span class="badge badge-free">Gratuit</span>`:`<span class="badge badge-paid">R$ ${m.price}</span>`;
+  const thumb=m.thumbnail?`<img src="/uploads/models/${m.thumbnail}" class="model-thumb">`:`<div class="model-thumb-ph">📦</div>`;
+  const card=document.createElement('div');card.className='model-card';
+  card.onclick=()=>downloadModel(m.id,m.price_type);
+  card.innerHTML=`${thumb}<div class="model-info"><div class="model-name">${m.name}</div><div class="model-author">par ${m.author}</div><div class="model-footer">${price}<span class="badge-cat">${m.category}</span></div></div>`;
+  grid.prepend(card);
+  const cnt=grid.querySelectorAll('.model-card').length;
+  document.getElementById('models-count').textContent=cnt+' modèle'+(cnt>1?'s':'');
+  document.getElementById('stat-models').textContent=cnt;
+}
+function downloadModel(id,pt){if(pt==='paid'){toast('Modèle payant — paiement Robux requis');return;}window.location.href=`/download/${id}`;}
+</script>
+</body>
+</html>

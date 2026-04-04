@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin — Boutique de BeauFort</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0e0e10;--bg2:#141416;--bg3:#1a1a1e;--border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.12);--text:#f0f0f2;--muted:#888891;--accent:#e8d5a3;--accent2:#c9a96e;--red:#f87171;--radius:8px;}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex;align-items:center;justify-content:center;}
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:2.5rem;width:100%;max-width:380px;}
+h1{font-family:'Syne',sans-serif;font-size:1.3rem;font-weight:800;margin-bottom:0.4rem;}
+.sub{color:var(--muted);font-size:0.85rem;margin-bottom:2rem;}
+label{display:block;font-size:0.72rem;font-weight:600;color:var(--muted);margin-bottom:5px;text-transform:uppercase;letter-spacing:0.5px;}
+input{width:100%;background:var(--bg3);border:1px solid var(--border2);border-radius:var(--radius);color:var(--text);font-family:'Inter',sans-serif;font-size:0.92rem;padding:11px 14px;outline:none;margin-bottom:1rem;}
+input:focus{border-color:var(--accent);}
+.btn{width:100%;padding:12px;background:var(--accent);color:#1a1408;border:none;border-radius:var(--radius);font-family:'Inter',sans-serif;font-weight:700;font-size:0.95rem;cursor:pointer;}
+.btn:hover{background:var(--accent2);}
+.error{background:rgba(248,113,113,0.08);border:1px solid rgba(248,113,113,0.2);border-radius:var(--radius);padding:10px 14px;color:var(--red);font-size:0.82rem;margin-top:1rem;}
+.back{display:block;text-align:center;margin-top:1.2rem;color:var(--muted);font-size:0.82rem;text-decoration:none;}
+.back:hover{color:var(--accent);}
+</style>
+</head>
+<body>
+<div class="card">
+  <h1>🔐 Admin</h1>
+  <p class="sub">Boutique de BeauFort</p>
+  <form method="POST" action="/admin">
+    <label>Mot de passe admin</label>
+    <input type="password" name="password" placeholder="••••••••" autofocus>
+    <button type="submit" class="btn">Accéder au dashboard</button>
+    {% if error %}<div class="error">{{ error }}</div>{% endif %}
+  </form>
+  <a href="/" class="back">← Retour au site</a>
+</div>
+</body>
+</html>
