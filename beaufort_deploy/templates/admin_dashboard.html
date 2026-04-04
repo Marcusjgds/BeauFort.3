@@ -160,7 +160,8 @@ header{background:rgba(14,14,16,0.95);border-bottom:1px solid var(--border);padd
     </div>
     <div class="section-body">
       <div class="add-user-row">
-        <input type="text" id="new-username" placeholder="Pseudo Roblox exact...">
+        <input type="text" id="new-username" placeholder="Pseudo...">
+        <input type="text" id="new-password" placeholder="Mot de passe...">
         <button class="btn btn-primary" onclick="addUser()">+ Ajouter</button>
       </div>
       <div class="user-list" id="user-list">
@@ -168,14 +169,14 @@ header{background:rgba(14,14,16,0.95);border-bottom:1px solid var(--border);padd
           {% for u in users %}
           <div class="user-item" id="user-{{ u.id }}">
             <div>
-              <div class="user-name">{{ u.roblox_username }}</div>
-              <div class="user-date">Ajouté le {{ u.added_at[:10] }}</div>
+              <div class="user-name">{{ u.username }}</div>
+              <div class="user-date">Ajouté le {{ u.created_at[:10] }}</div>
             </div>
-            <button class="btn btn-danger btn-sm" onclick="removeUser({{ u.id }}, '{{ u.roblox_username }}')">Retirer</button>
+            <button class="btn btn-danger btn-sm" onclick="removeUser({{ u.id }}, '{{ u.username }}')">Retirer</button>
           </div>
           {% endfor %}
         {% else %}
-          <div class="empty" id="users-empty">Aucun utilisateur autorisé pour l'instant.</div>
+          <div class="empty" id="users-empty">Aucun utilisateur pour l'instant.</div>
         {% endif %}
       </div>
     </div>
@@ -238,17 +239,21 @@ async function saveSettings() {
 
 async function addUser() {
   const input = document.getElementById('new-username');
+  const pinput = document.getElementById('new-password');
   const username = input.value.trim();
-  if (!username) return;
-  const fd = new FormData(); fd.append('username', username);
+  const password = pinput.value.trim();
+  if (!username || !password) { toast('Pseudo et mot de passe requis', false); return; }
+  const fd = new FormData();
+  fd.append('username', username);
+  fd.append('password', password);
   const r = await fetch('/admin/add_user', {method:'POST', body:fd});
   const d = await r.json();
   if (d.success) {
-    input.value = '';
+    input.value = ''; pinput.value = '';
     const empty = document.getElementById('users-empty');
     if (empty) empty.remove();
     const item = document.createElement('div');
-    item.className = 'user-item'; item.id = 'user-new';
+    item.className = 'user-item';
     item.innerHTML = `<div><div class="user-name">${username}</div><div class="user-date">Ajouté maintenant</div></div><button class="btn btn-danger btn-sm" onclick="removeUser(0,'${username}')">Retirer</button>`;
     document.getElementById('user-list').prepend(item);
     toast(`✓ ${username} ajouté !`);
