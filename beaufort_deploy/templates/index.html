@@ -2,281 +2,286 @@
 <html lang="fr" data-theme="dark">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Boutique de BeauFort — Modèles Roblox</title>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<title>Boutique de BeauFort</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 
-/* ── THEMES ── */
-[data-theme="dark"]{
-  --bg:#0e0e10;--bg2:#141416;--bg3:#1a1a1e;
-  --border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.12);
-  --text:#f0f0f2;--muted:#888891;--hint:#555560;
-  --accent:#e8d5a3;--accent2:#c9a96e;--accent-s:rgba(232,213,163,0.08);
-  --green:#4ade80;--green-s:rgba(74,222,128,0.1);
-  --gold:#f59e0b;--gold-s:rgba(245,158,11,0.1);--red:#f87171;
-}
-[data-theme="light"]{
-  --bg:#f8f9fb;--bg2:#ffffff;--bg3:#f1f3f5;
-  --border:rgba(0,0,0,0.08);--border2:rgba(0,0,0,0.14);
-  --text:#111827;--muted:#6b7280;--hint:#9ca3af;
-  --accent:#2563eb;--accent2:#1d4ed8;--accent-s:rgba(37,99,235,0.08);
-  --green:#16a34a;--green-s:rgba(22,163,74,0.1);
-  --gold:#d97706;--gold-s:rgba(217,119,6,0.1);--red:#dc2626;
-}
-[data-theme="noel"]{
-  --bg:#0a1a0a;--bg2:#0f2410;--bg3:#142e15;
-  --border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.12);
-  --text:#f0f0f2;--muted:#88a888;--hint:#556655;
-  --accent:#ff4444;--accent2:#cc2222;--accent-s:rgba(255,68,68,0.1);
-  --green:#4ade80;--green-s:rgba(74,222,128,0.1);
-  --gold:#ffd700;--gold-s:rgba(255,215,0,0.1);--red:#ff4444;
-}
-[data-theme="halloween"]{
-  --bg:#0a0005;--bg2:#120010;--bg3:#1a0018;
-  --border:rgba(255,140,0,0.15);--border2:rgba(255,140,0,0.25);
-  --text:#f0e0f0;--muted:#a080a0;--hint:#604060;
-  --accent:#ff8c00;--accent2:#cc6600;--accent-s:rgba(255,140,0,0.1);
-  --green:#a0ff60;--green-s:rgba(160,255,96,0.1);
-  --gold:#ff8c00;--gold-s:rgba(255,140,0,0.1);--red:#ff3060;
-}
-[data-theme="paques"]{
-  --bg:#f0f8ff;--bg2:#ffffff;--bg3:#f5f0ff;
-  --border:rgba(180,120,220,0.15);--border2:rgba(180,120,220,0.25);
-  --text:#2d1b4e;--muted:#8b6ba8;--hint:#c4a8d4;
-  --accent:#c084fc;--accent2:#a855f7;--accent-s:rgba(192,132,252,0.1);
-  --green:#4ade80;--green-s:rgba(74,222,128,0.1);
-  --gold:#f59e0b;--gold-s:rgba(245,158,11,0.1);--red:#f43f5e;
+:root{
+  --bg:#080809;
+  --surface:#0f0f11;
+  --surface2:#161618;
+  --surface3:#1d1d20;
+  --line:rgba(255,255,255,0.06);
+  --line2:rgba(255,255,255,0.1);
+  --text:#f2f2f4;
+  --text2:#8888a0;
+  --text3:#444455;
+  --gold:#c9a96e;
+  --gold2:#e8d5a3;
+  --gold-dim:rgba(201,169,110,0.1);
+  --green:#34d399;
+  --green-dim:rgba(52,211,153,0.1);
+  --amber:#f59e0b;
+  --amber-dim:rgba(245,158,11,0.1);
+  --red:#f87171;
+  --r:10px;
+  --r2:14px;
 }
 
-body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-size:14px;line-height:1.6;min-height:100vh;transition:background 0.3s,color 0.3s;}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.6;min-height:100vh;}
 
-/* Décorations saisonnières */
-.seasonal-banner{display:none;text-align:center;padding:8px;font-size:0.85rem;font-weight:600;}
-[data-theme="noel"] .seasonal-banner{display:block;background:linear-gradient(90deg,#0f2410,#1a3a1a,#0f2410);color:#ff4444;border-bottom:1px solid rgba(255,68,68,0.2);}
-[data-theme="halloween"] .seasonal-banner{display:block;background:linear-gradient(90deg,#120010,#1a0018,#120010);color:#ff8c00;border-bottom:1px solid rgba(255,140,0,0.2);}
-[data-theme="paques"] .seasonal-banner{display:block;background:linear-gradient(90deg,#f0e8ff,#fff0f8,#f0e8ff);color:#a855f7;border-bottom:1px solid rgba(168,85,247,0.2);}
+/* NAV */
+nav{position:sticky;top:0;z-index:100;padding:0 2rem;background:rgba(8,8,9,0.85);backdrop-filter:blur(24px);border-bottom:1px solid var(--line);}
+.nav-inner{max-width:1200px;margin:0 auto;height:60px;display:flex;align-items:center;justify-content:space-between;gap:1rem;}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.brand-logo{width:36px;height:36px;border-radius:8px;object-fit:cover;border:1px solid var(--line2);}
+.brand-text{font-family:'DM Serif Display',serif;font-size:1.1rem;color:var(--text);letter-spacing:-0.3px;}
+.nav-end{display:flex;align-items:center;gap:8px;}
 
-header{background:rgba(var(--bg-rgb,14,14,16),0.95);border-bottom:1px solid var(--border);backdrop-filter:blur(20px);position:sticky;top:0;z-index:100;padding:0 2rem;}
-[data-theme="light"] header,[data-theme="paques"] header{background:rgba(255,255,255,0.95);}
-.hi{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;gap:1.5rem;}
-.logo-area{display:flex;align-items:center;gap:12px;text-decoration:none;}
-.logo-img{width:40px;height:40px;border-radius:8px;object-fit:cover;}
-.logo-name{font-family:'Syne',sans-serif;font-weight:800;font-size:0.95rem;color:var(--text);line-height:1.2;}
-.logo-name small{display:block;font-size:0.62rem;font-weight:400;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;}
-.nav-right{display:flex;align-items:center;gap:8px;}
-.user-chip{display:flex;align-items:center;gap:8px;background:var(--bg3);border:1px solid var(--border2);border-radius:999px;padding:5px 14px 5px 5px;}
-.avatar{width:32px;height:32px;border-radius:50%;object-fit:cover;}
-.avatar-ph{width:32px;height:32px;border-radius:50%;background:var(--accent2);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;color:#fff;}
-[data-theme="dark"] .avatar-ph,[data-theme="noel"] .avatar-ph,[data-theme="halloween"] .avatar-ph{color:#1a1408;}
-.username{font-weight:600;font-size:0.85rem;}
-.badge-admin{background:var(--accent-s);border:1px solid rgba(232,213,163,0.2);color:var(--accent);font-size:0.68rem;font-weight:700;border-radius:999px;padding:2px 8px;}
+/* THEME SWITCHER */
+.ts{display:flex;background:var(--surface2);border:1px solid var(--line);border-radius:999px;padding:3px;gap:2px;}
+.ts-btn{width:26px;height:26px;border-radius:50%;border:none;background:transparent;color:var(--text2);cursor:pointer;font-size:12px;display:flex;align-items:center;justify-content:center;transition:all 0.15s;}
+.ts-btn:hover{background:var(--line2);color:var(--text);}
+.ts-btn.on{background:var(--gold-dim);color:var(--gold);}
 
-/* Theme switcher */
-.theme-switcher{display:flex;align-items:center;gap:4px;background:var(--bg3);border:1px solid var(--border2);border-radius:999px;padding:3px;}
-.theme-btn{width:28px;height:28px;border-radius:50%;border:none;cursor:pointer;font-size:13px;display:flex;align-items:center;justify-content:center;background:transparent;transition:all 0.15s;}
-.theme-btn:hover{background:var(--border2);}
-.theme-btn.active{background:var(--accent);color:#1a1408;}
-[data-theme="light"] .theme-btn.active{color:#fff;}
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;gap:6px;font-family:'DM Sans',sans-serif;font-weight:500;font-size:0.88rem;border:none;border-radius:var(--r);cursor:pointer;padding:8px 16px;transition:all 0.15s;text-decoration:none;white-space:nowrap;letter-spacing:-0.1px;}
+.btn-gold{background:var(--gold);color:#0f0d08;}
+.btn-gold:hover{background:var(--gold2);}
+.btn-outline{background:transparent;color:var(--text2);border:1px solid var(--line2);}
+.btn-outline:hover{border-color:var(--line2);color:var(--text);background:var(--surface2);}
+.btn-sm{padding:6px 12px;font-size:0.82rem;}
+.btn-danger{background:transparent;color:var(--red);border:1px solid rgba(248,113,113,0.2);}
+.btn-danger:hover{background:rgba(248,113,113,0.06);}
 
-.btn{display:inline-flex;align-items:center;gap:7px;font-family:'Inter',sans-serif;font-weight:600;font-size:0.85rem;border:none;border-radius:8px;cursor:pointer;padding:9px 18px;transition:all 0.15s;text-decoration:none;white-space:nowrap;}
-.btn-primary{background:var(--accent);color:#1a1408;}
-[data-theme="light"] .btn-primary,[data-theme="paques"] .btn-primary{color:#fff;}
-.btn-primary:hover{background:var(--accent2);}
-.btn-secondary{background:var(--bg3);color:var(--text);border:1px solid var(--border2);}
-.btn-secondary:hover{background:var(--bg2);}
-.btn-ghost{background:transparent;color:var(--muted);border:1px solid var(--border);}
-.btn-ghost:hover{color:var(--red);border-color:rgba(248,113,113,0.3);}
-.btn-sm{padding:6px 13px;font-size:0.8rem;}
+/* USER PILL */
+.upill{display:flex;align-items:center;gap:8px;background:var(--surface2);border:1px solid var(--line2);border-radius:999px;padding:4px 12px 4px 4px;}
+.uav{width:28px;height:28px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-weight:600;font-size:11px;color:#0f0d08;}
+.uname{font-size:0.85rem;font-weight:500;}
+.badge-adm{background:var(--gold-dim);color:var(--gold);font-size:0.65rem;font-weight:600;border-radius:999px;padding:2px 7px;letter-spacing:0.5px;text-transform:uppercase;}
 
-.hero{position:relative;overflow:hidden;padding:5rem 2rem 4rem;background:var(--bg2);border-bottom:1px solid var(--border);}
-.hero::before{content:'';position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:700px;height:350px;background:radial-gradient(ellipse,var(--accent-s) 0%,transparent 70%);pointer-events:none;}
-.hero-inner{max-width:680px;margin:0 auto;text-align:center;position:relative;}
-.hero-tag{display:inline-flex;align-items:center;gap:7px;background:var(--accent-s);border:1px solid rgba(232,213,163,0.2);border-radius:999px;padding:5px 14px;font-size:0.72rem;font-weight:600;color:var(--accent);letter-spacing:0.8px;text-transform:uppercase;margin-bottom:1.5rem;}
-.hero h1{font-family:'Syne',sans-serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:800;line-height:1.1;letter-spacing:-1px;margin-bottom:1.2rem;}
-.hero h1 em{font-style:normal;color:var(--accent);}
-.hero p{color:var(--muted);font-size:1rem;max-width:480px;margin:0 auto 2rem;}
+/* SEASONAL */
+.seasonal{display:none;text-align:center;padding:7px 2rem;font-size:0.82rem;font-weight:500;}
+[data-theme="noel"] .seasonal{display:block;background:linear-gradient(90deg,#0a1a0a,#122012,#0a1a0a);color:#ff4444;border-bottom:1px solid rgba(255,68,68,0.15);}
+[data-theme="halloween"] .seasonal{display:block;background:linear-gradient(90deg,#0d0008,#150010,#0d0008);color:#ff8c00;border-bottom:1px solid rgba(255,140,0,0.15);}
+[data-theme="paques"] .seasonal{display:block;background:linear-gradient(90deg,#1a0a2a,#220a30,#1a0a2a);color:#c084fc;border-bottom:1px solid rgba(192,132,252,0.15);}
+
+/* THEME OVERRIDES */
+[data-theme="light"]{--bg:#f5f5f7;--surface:#fff;--surface2:#f0f0f3;--surface3:#e8e8ec;--line:rgba(0,0,0,0.07);--line2:rgba(0,0,0,0.12);--text:#0f0f11;--text2:#6b6b80;--text3:#b0b0c0;}
+[data-theme="light"] body{background:var(--bg);}
+[data-theme="light"] nav{background:rgba(245,245,247,0.9);}
+[data-theme="noel"]{--bg:#060e06;--surface:#0a140a;--surface2:#0f1c0f;--surface3:#142414;--line:rgba(255,255,255,0.06);--line2:rgba(255,100,100,0.15);--gold:#ff4444;--gold2:#ff6666;--gold-dim:rgba(255,68,68,0.1);}
+[data-theme="halloween"]{--bg:#080005;--surface:#0e000a;--surface2:#160010;--surface3:#1e0018;--line:rgba(255,140,0,0.1);--line2:rgba(255,140,0,0.2);--gold:#ff8c00;--gold2:#ffaa33;--gold-dim:rgba(255,140,0,0.1);}
+[data-theme="paques"]{--bg:#0d0818;--surface:#130e22;--surface2:#19122e;--surface3:#20163a;--line:rgba(192,132,252,0.1);--line2:rgba(192,132,252,0.18);--gold:#c084fc;--gold2:#d8a4ff;--gold-dim:rgba(192,132,252,0.1);}
+
+/* HERO */
+.hero{padding:5rem 2rem 4rem;text-align:center;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;top:-100px;left:50%;transform:translateX(-50%);width:600px;height:400px;background:radial-gradient(ellipse,var(--gold-dim) 0%,transparent 65%);pointer-events:none;}
+.hero-tag{display:inline-flex;align-items:center;gap:6px;background:var(--gold-dim);border:1px solid rgba(201,169,110,0.18);border-radius:999px;padding:5px 14px;font-size:0.72rem;font-weight:500;color:var(--gold);letter-spacing:0.8px;text-transform:uppercase;margin-bottom:1.8rem;}
+.hero h1{font-family:'DM Serif Display',serif;font-size:clamp(2.4rem,5vw,4rem);line-height:1.1;letter-spacing:-1.5px;margin-bottom:1.2rem;max-width:700px;margin-left:auto;margin-right:auto;}
+.hero h1 i{font-style:italic;color:var(--gold);}
+.hero p{color:var(--text2);font-size:1.05rem;max-width:460px;margin:0 auto 2.5rem;font-weight:300;}
 .hero-cta{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
-.hero-stats{display:flex;justify-content:center;gap:3rem;margin-top:3.5rem;padding-top:2.5rem;border-top:1px solid var(--border);}
-.stat-n{font-family:'Syne',sans-serif;font-size:2rem;font-weight:800;color:var(--text);letter-spacing:-1px;}
-.stat-l{font-size:0.75rem;color:var(--muted);margin-top:2px;}
+.divider{display:flex;justify-content:center;gap:4rem;margin-top:4rem;padding-top:3rem;border-top:1px solid var(--line);}
+.dv-n{font-family:'DM Serif Display',serif;font-size:2.2rem;color:var(--text);}
+.dv-l{font-size:0.75rem;color:var(--text2);margin-top:3px;font-weight:300;letter-spacing:0.5px;}
 
-.container{max-width:1280px;margin:0 auto;padding:2.5rem 2rem;}
-.layout{display:grid;grid-template-columns:290px 1fr;gap:2rem;align-items:start;}
-.panel{background:var(--bg2);border:1px solid var(--border);border-radius:16px;overflow:hidden;margin-bottom:1rem;}
-.panel-header{padding:1rem 1.25rem;border-bottom:1px solid var(--border);}
-.panel-title{font-family:'Syne',sans-serif;font-size:0.85rem;font-weight:700;color:var(--text);}
-.panel-body{padding:1.25rem;}
-.form-group{margin-bottom:1rem;}
-label{display:block;font-size:0.7rem;font-weight:600;color:var(--muted);margin-bottom:5px;text-transform:uppercase;letter-spacing:0.5px;}
-input[type="text"],input[type="number"],textarea,select{width:100%;background:var(--bg3);border:1px solid var(--border2);border-radius:8px;color:var(--text);font-family:'Inter',sans-serif;font-size:0.88rem;padding:9px 12px;outline:none;transition:border-color 0.15s;-webkit-appearance:none;}
-input:focus,textarea:focus,select:focus{border-color:var(--accent);}
-select option{background:var(--bg3);}
-textarea{resize:vertical;min-height:70px;}
-.price-toggle{display:flex;gap:6px;margin-bottom:8px;}
-.ptgl{flex:1;padding:8px;border-radius:8px;border:1px solid var(--border2);background:var(--bg3);color:var(--muted);font-family:'Inter',sans-serif;font-weight:600;font-size:0.8rem;cursor:pointer;transition:all 0.15s;text-align:center;}
-.ptgl.active-free{border-color:var(--green);color:var(--green);background:var(--green-s);}
-.ptgl.active-paid{border-color:var(--gold);color:var(--gold);background:var(--gold-s);}
-#price-wrap{display:none;}
-.file-drop{border:1.5px dashed var(--border2);border-radius:8px;padding:1.2rem;text-align:center;cursor:pointer;transition:all 0.15s;position:relative;background:var(--bg3);}
-.file-drop:hover{border-color:var(--accent);background:var(--accent-s);}
-.file-drop input[type="file"]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;}
-.file-drop-icon{font-size:1.4rem;margin-bottom:4px;}
-.file-drop-label{font-size:0.78rem;color:var(--muted);}
-.file-drop-label b{color:var(--accent);}
-.file-name-display{font-size:0.72rem;color:var(--accent);margin-top:4px;font-weight:500;}
-.msg{padding:8px 12px;border-radius:8px;font-size:0.8rem;font-weight:500;margin-top:8px;display:none;}
-.msg.ok{background:var(--green-s);border:1px solid rgba(74,222,128,0.2);color:var(--green);}
-.msg.err{background:rgba(248,113,113,0.07);border:1px solid rgba(248,113,113,0.2);color:var(--red);}
-.connect-panel{text-align:center;}
-.connect-panel p{color:var(--muted);font-size:0.85rem;margin-bottom:1.2rem;line-height:1.6;}
-.section-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;}
-.section-title{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:700;}
-.section-count{font-size:0.78rem;color:var(--muted);background:var(--bg3);border:1px solid var(--border);border-radius:999px;padding:3px 10px;}
-.models-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;}
-.model-card{background:var(--bg2);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:all 0.2s;cursor:pointer;}
-.model-card:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,0.2);}
-.model-thumb{width:100%;height:150px;object-fit:cover;display:block;}
-.model-thumb-ph{width:100%;height:150px;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:2.5rem;}
-.model-info{padding:14px;}
-.model-name{font-family:'Syne',sans-serif;font-weight:700;font-size:0.9rem;margin-bottom:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.model-author{font-size:0.75rem;color:var(--muted);margin-bottom:10px;}
-.model-footer{display:flex;align-items:center;justify-content:space-between;}
-.badge{font-size:0.7rem;font-weight:600;border-radius:999px;padding:3px 10px;}
-.badge-free{background:var(--green-s);color:var(--green);border:1px solid rgba(74,222,128,0.2);}
-.badge-paid{background:var(--gold-s);color:var(--gold);border:1px solid rgba(245,158,11,0.2);}
-.badge-cat{font-size:0.68rem;font-weight:500;color:var(--hint);background:var(--bg3);border:1px solid var(--border);border-radius:999px;padding:3px 9px;}
-.empty{grid-column:1/-1;text-align:center;padding:4rem 2rem;color:var(--muted);}
-.empty-icon{font-size:2.5rem;margin-bottom:1rem;opacity:0.3;}
-#toast{position:fixed;bottom:1.5rem;right:1.5rem;background:var(--bg3);color:var(--text);border:1px solid var(--border2);border-radius:12px;padding:12px 18px;font-size:0.85rem;font-weight:500;box-shadow:0 8px 24px rgba(0,0,0,0.3);transform:translateY(80px);opacity:0;transition:all 0.3s;z-index:999;}
+/* LAYOUT */
+.wrap{max-width:1200px;margin:0 auto;padding:3rem 2rem;}
+.grid{display:grid;grid-template-columns:270px 1fr;gap:2rem;align-items:start;}
+
+/* SIDEBAR */
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r2);overflow:hidden;margin-bottom:1rem;}
+.card-head{padding:.9rem 1.2rem;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:8px;}
+.card-title{font-size:0.82rem;font-weight:600;color:var(--text);letter-spacing:-0.2px;}
+.card-body{padding:1.2rem;}
+
+label{display:block;font-size:0.7rem;font-weight:500;color:var(--text2);margin-bottom:4px;text-transform:uppercase;letter-spacing:0.6px;}
+input[type="text"],input[type="number"],textarea,select{width:100%;background:var(--surface2);border:1px solid var(--line2);border-radius:var(--r);color:var(--text);font-family:'DM Sans',sans-serif;font-size:0.88rem;padding:9px 12px;outline:none;transition:border-color 0.15s;-webkit-appearance:none;margin-bottom:1rem;}
+input:focus,textarea:focus,select:focus{border-color:var(--gold);}
+select option{background:var(--surface2);}
+textarea{resize:vertical;min-height:65px;margin-bottom:1rem;}
+
+.ptoggle{display:flex;gap:5px;margin-bottom:1rem;}
+.ptgl{flex:1;padding:7px;border-radius:var(--r);border:1px solid var(--line2);background:var(--surface2);color:var(--text2);font-family:'DM Sans',sans-serif;font-weight:500;font-size:0.8rem;cursor:pointer;transition:all 0.15s;text-align:center;}
+.ptgl.af{border-color:var(--green);color:var(--green);background:var(--green-dim);}
+.ptgl.ap{border-color:var(--amber);color:var(--amber);background:var(--amber-dim);}
+#pw{display:none;}
+
+.drop{border:1.5px dashed var(--line2);border-radius:var(--r);padding:1.1rem;text-align:center;cursor:pointer;position:relative;background:var(--surface2);transition:all 0.15s;margin-bottom:1rem;}
+.drop:hover{border-color:var(--gold);background:var(--gold-dim);}
+.drop input[type="file"]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;}
+.drop-ico{font-size:1.3rem;margin-bottom:3px;}
+.drop-lbl{font-size:0.77rem;color:var(--text2);}
+.drop-lbl b{color:var(--gold);}
+.drop-fn{font-size:0.7rem;color:var(--gold);margin-top:3px;font-weight:500;}
+
+.msg{padding:8px 12px;border-radius:var(--r);font-size:0.78rem;font-weight:500;margin-top:6px;display:none;}
+.msg.ok{background:var(--green-dim);border:1px solid rgba(52,211,153,0.2);color:var(--green);}
+.msg.err{background:rgba(248,113,113,0.07);border:1px solid rgba(248,113,113,0.18);color:var(--red);}
+
+/* MODELS */
+.sec-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;}
+.sec-title{font-family:'DM Serif Display',serif;font-size:1.4rem;letter-spacing:-0.5px;}
+.sec-count{font-size:0.75rem;color:var(--text2);background:var(--surface2);border:1px solid var(--line);border-radius:999px;padding:3px 10px;}
+
+.mgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(195px,1fr));gap:1rem;}
+.mc{background:var(--surface);border:1px solid var(--line);border-radius:var(--r2);overflow:hidden;cursor:pointer;transition:all 0.2s;}
+.mc:hover{border-color:var(--line2);transform:translateY(-2px);box-shadow:0 16px 40px rgba(0,0,0,0.4);}
+.mc-img{width:100%;height:140px;object-fit:cover;display:block;}
+.mc-ph{width:100%;height:140px;background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:2rem;color:var(--text3);}
+.mc-info{padding:12px;}
+.mc-name{font-weight:600;font-size:0.88rem;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;letter-spacing:-0.2px;}
+.mc-by{font-size:0.72rem;color:var(--text2);margin-bottom:9px;}
+.mc-foot{display:flex;align-items:center;justify-content:space-between;}
+.pill{font-size:0.68rem;font-weight:500;border-radius:999px;padding:3px 9px;}
+.pill-free{background:var(--green-dim);color:var(--green);}
+.pill-paid{background:var(--amber-dim);color:var(--amber);}
+.pill-cat{background:var(--surface3);color:var(--text2);border:1px solid var(--line);}
+
+.empty{grid-column:1/-1;text-align:center;padding:4rem 2rem;color:var(--text2);}
+.empty-i{font-size:2.5rem;margin-bottom:.8rem;opacity:.2;}
+
+/* TOAST */
+#toast{position:fixed;bottom:1.5rem;right:1.5rem;background:var(--surface);color:var(--text);border:1px solid var(--line2);border-radius:var(--r2);padding:11px 16px;font-size:0.83rem;font-weight:500;box-shadow:0 8px 32px rgba(0,0,0,0.4);transform:translateY(80px);opacity:0;transition:all 0.25s;z-index:999;}
 #toast.show{transform:translateY(0);opacity:1;}
-footer{border-top:1px solid var(--border);padding:2rem;text-align:center;color:var(--hint);font-size:0.78rem;margin-top:4rem;}
-footer a{color:var(--muted);text-decoration:none;margin:0 8px;}
-footer a:hover{color:var(--accent);}
-@media(max-width:900px){.layout{grid-template-columns:1fr}.hero-stats{gap:2rem}header{padding:0 1rem}.container{padding:2rem 1rem}}
+
+footer{border-top:1px solid var(--line);padding:2rem;text-align:center;color:var(--text3);font-size:0.75rem;margin-top:3rem;}
+footer a{color:var(--text2);text-decoration:none;margin:0 8px;}
+footer a:hover{color:var(--gold);}
+
+@media(max-width:860px){.grid{grid-template-columns:1fr}.divider{gap:2rem}.hero{padding:3.5rem 1.5rem 2.5rem}nav,footer,.wrap{padding-left:1rem;padding-right:1rem}}
 </style>
 </head>
 <body>
-<div class="seasonal-banner" id="seasonal-banner"></div>
-<header>
-  <div class="hi">
-    <a class="logo-area" href="/">
-      {% if site_logo %}<img src="/uploads/logos/{{ site_logo }}" class="logo-img" alt="Logo">
-      {% else %}<img src="/static/logo.png" class="logo-img" alt="Logo">{% endif %}
-      <div class="logo-name">Boutique de BeauFort<small>Modèles Roblox</small></div>
-    </a>
-    <div class="nav-right">
 
+<div class="seasonal" id="sb"></div>
+
+<nav>
+  <div class="nav-inner">
+    <a class="brand" href="/">
+      {% if site_logo %}<img src="/uploads/logos/{{ site_logo }}" class="brand-logo">
+      {% else %}<img src="/static/logo.png" class="brand-logo">{% endif %}
+      <span class="brand-text">BeauFort</span>
+    </a>
+    <div class="nav-end">
       <!-- Theme switcher -->
-      <div class="theme-switcher" id="theme-switcher">
-        <button class="theme-btn" onclick="setTheme('light')" title="Clair">☀️</button>
-        <button class="theme-btn active" onclick="setTheme('dark')" title="Sombre">🌙</button>
-        <button class="theme-btn" onclick="setTheme('system')" title="Système">⚙️</button>
+      <div class="ts" id="ts">
+        <button class="ts-btn" onclick="setTheme('dark')" title="Sombre">🌙</button>
+        <button class="ts-btn" onclick="setTheme('light')" title="Clair">☀️</button>
+        <button class="ts-btn" onclick="setTheme('system')" title="Système">⚙️</button>
         {% if is_admin %}
-        <button class="theme-btn" onclick="setTheme('noel')" title="Noël">🎄</button>
-        <button class="theme-btn" onclick="setTheme('halloween')" title="Halloween">🎃</button>
-        <button class="theme-btn" onclick="setTheme('paques')" title="Pâques">🐣</button>
+        <button class="ts-btn" onclick="setTheme('noel')" title="Noël">🎄</button>
+        <button class="ts-btn" onclick="setTheme('halloween')" title="Halloween">🎃</button>
+        <button class="ts-btn" onclick="setTheme('paques')" title="Pâques">🐣</button>
         {% endif %}
       </div>
-
       {% if logged_in %}
-        {% if is_admin %}<span class="badge-admin">Admin</span>{% endif %}
-        <div class="user-chip">
-          {% if avatar %}<img src="{{ avatar }}" class="avatar" alt="avatar" onerror="this.style.display='none'">
-          {% else %}<div class="avatar-ph">{{ username[0]|upper }}</div>{% endif %}
-          <span class="username">{{ username }}</span>
+        {% if is_admin %}<span class="badge-adm">Admin</span>{% endif %}
+        <div class="upill">
+          <div class="uav">{{ username[0]|upper }}</div>
+          <span class="uname">{{ username }}</span>
         </div>
-        {% if is_admin %}<a href="/admin/dashboard" class="btn btn-secondary btn-sm">Dashboard</a>{% endif %}
-        <a href="/logout" class="btn btn-ghost btn-sm">Déconnexion</a>
+        {% if is_admin %}<a href="/admin/dashboard" class="btn btn-outline btn-sm">Dashboard</a>{% endif %}
+        <a href="/logout" class="btn btn-outline btn-sm">Quitter</a>
       {% else %}
-        <a href="/login" class="btn btn-primary btn-sm">Se connecter</a>
+        <a href="/login" class="btn btn-gold btn-sm">Connexion</a>
       {% endif %}
     </div>
   </div>
-</header>
+</nav>
 
 <div class="hero">
-  <div class="hero-inner">
-    <div class="hero-tag">🎮 Marketplace Roblox</div>
-    <h1>Des modèles de<br><em>qualité supérieure</em></h1>
-    <p>Découvre et partage les meilleurs modèles .rbxmx pour tes jeux Roblox.</p>
-    <div class="hero-cta">
-      {% if not logged_in %}
-        <a href="/login" class="btn btn-primary">Commencer gratuitement →</a>
-        <a href="#models" class="btn btn-secondary">Voir les modèles</a>
-      {% else %}
-        <a href="#models" class="btn btn-primary">Voir les modèles →</a>
-      {% endif %}
-    </div>
-    <div class="hero-stats">
-      <div class="stat"><div class="stat-n" id="stat-models">{{ models|length }}</div><div class="stat-l">Modèles</div></div>
-      <div class="stat"><div class="stat-n">100%</div><div class="stat-l">Gratuit</div></div>
-      <div class="stat"><div class="stat-n">∞</div><div class="stat-l">Creators</div></div>
-    </div>
+  <div class="hero-tag">Marketplace Roblox</div>
+  <h1>Des modèles<br><i>sans compromis</i></h1>
+  <p>Découvre, partage et télécharge les meilleurs modèles .rbxmx pour tes projets.</p>
+  <div class="hero-cta">
+    {% if not logged_in %}
+      <a href="/login" class="btn btn-gold">Rejoindre la plateforme</a>
+      <a href="#models" class="btn btn-outline">Voir les modèles</a>
+    {% else %}
+      <a href="#models" class="btn btn-gold">Voir les modèles</a>
+    {% endif %}
+  </div>
+  <div class="divider">
+    <div><div class="dv-n" id="sn">{{ models|length }}</div><div class="dv-l">Modèles</div></div>
+    <div><div class="dv-n">100%</div><div class="dv-l">Gratuit</div></div>
+    <div><div class="dv-n">∞</div><div class="dv-l">Creators</div></div>
   </div>
 </div>
 
-<div class="container">
-  <div class="layout">
+<div class="wrap">
+  <div class="grid">
     <aside>
       {% if logged_in and (can_upload or is_admin) %}
-      <div class="panel">
-        <div class="panel-header"><div class="panel-title">Publier un modèle</div></div>
-        <div class="panel-body">
-          <div class="form-group"><label>Nom</label><input type="text" id="model-name" placeholder="Nom du modèle"></div>
-          <div class="form-group"><label>Description</label><textarea id="model-desc" placeholder="Décris ton modèle..."></textarea></div>
-          <div class="form-group"><label>Catégorie</label><select id="model-cat"><option>Buildings</option><option>Vehicles</option><option>Characters</option><option>Tools</option><option>Nature</option><option>UI</option><option>Scripts</option><option>Other</option></select></div>
-          <div class="form-group">
-            <label>Prix</label>
-            <div class="price-toggle"><button class="ptgl active-free" id="btn-free" onclick="setPrice('free')">✓ Gratuit</button><button class="ptgl" id="btn-paid" onclick="setPrice('paid')">R$ Payant</button></div>
-            <div id="price-wrap"><input type="number" id="model-price" placeholder="Prix en Robux" min="1"></div>
+      <div class="card">
+        <div class="card-head"><span class="card-title">Publier un modèle</span></div>
+        <div class="card-body">
+          <label>Nom</label>
+          <input type="text" id="mn" placeholder="Nom du modèle">
+          <label>Description</label>
+          <textarea id="md" placeholder="Décris ton modèle..."></textarea>
+          <label>Catégorie</label>
+          <select id="mc">
+            <option>Buildings</option><option>Vehicles</option><option>Characters</option>
+            <option>Tools</option><option>Nature</option><option>UI</option>
+            <option>Scripts</option><option>Other</option>
+          </select>
+          <label>Prix</label>
+          <div class="ptoggle">
+            <button class="ptgl af" id="bf" onclick="sp('free')">Gratuit</button>
+            <button class="ptgl" id="bp" onclick="sp('paid')">Payant R$</button>
           </div>
-          <div class="form-group"><label>Fichier .rbxm / .rbxmx</label><div class="file-drop"><input type="file" id="model-file" accept=".rbxm,.rbxmx" onchange="setFileName('model-file','fn-model')"><div class="file-drop-icon">📁</div><div class="file-drop-label">Glisse ici ou <b>clique</b></div><div class="file-name-display" id="fn-model"></div></div></div>
-          <div class="form-group"><label>Miniature (optionnel)</label><div class="file-drop"><input type="file" id="thumb-file" accept="image/*" onchange="setFileName('thumb-file','fn-thumb')"><div class="file-drop-icon">🖼️</div><div class="file-drop-label">PNG / JPG</div><div class="file-name-display" id="fn-thumb"></div></div></div>
-          <button class="btn btn-primary" style="width:100%;justify-content:center" onclick="uploadModel()">Publier →</button>
-          <div class="msg" id="upload-msg"></div>
+          <div id="pw"><input type="number" id="mp" placeholder="Montant en Robux" min="1"></div>
+          <label>Fichier .rbxm / .rbxmx</label>
+          <div class="drop"><input type="file" id="mf" accept=".rbxm,.rbxmx" onchange="sfn('mf','fn1')"><div class="drop-ico">📁</div><div class="drop-lbl">Glisse ou <b>clique</b></div><div class="drop-fn" id="fn1"></div></div>
+          <label>Miniature (optionnel)</label>
+          <div class="drop"><input type="file" id="tf" accept="image/*" onchange="sfn('tf','fn2')"><div class="drop-ico">🖼️</div><div class="drop-lbl">Image PNG / JPG</div><div class="drop-fn" id="fn2"></div></div>
+          <button class="btn btn-gold" style="width:100%;justify-content:center" onclick="pub()">Publier →</button>
+          <div class="msg" id="um"></div>
         </div>
       </div>
       {% elif logged_in %}
-      <div class="panel">
-        <div class="panel-header"><div class="panel-title">Publier</div></div>
-        <div class="panel-body" style="text-align:center;color:var(--muted);font-size:0.85rem;line-height:1.6;">Tu n'es pas encore autorisé à publier.<br>Contacte un administrateur.</div>
+      <div class="card">
+        <div class="card-head"><span class="card-title">Accès restreint</span></div>
+        <div class="card-body" style="color:var(--text2);font-size:0.85rem;line-height:1.7;">Tu n'es pas encore autorisé à publier des modèles. Contacte un administrateur.</div>
       </div>
       {% else %}
-      <div class="panel">
-        <div class="panel-header"><div class="panel-title">Connexion</div></div>
-        <div class="panel-body connect-panel">
-          <p>Connecte-toi pour accéder à la plateforme.</p>
-          <a href="/login" class="btn btn-primary" style="width:100%;justify-content:center">Se connecter →</a>
+      <div class="card">
+        <div class="card-head"><span class="card-title">Rejoindre</span></div>
+        <div class="card-body" style="text-align:center">
+          <p style="color:var(--text2);font-size:0.85rem;margin-bottom:1.2rem;line-height:1.7">Connecte-toi pour publier des modèles et accéder à la plateforme.</p>
+          <a href="/login" class="btn btn-gold" style="width:100%;justify-content:center">Connexion →</a>
         </div>
       </div>
       {% endif %}
     </aside>
 
     <section id="models">
-      <div class="section-header">
-        <div class="section-title">Modèles disponibles</div>
-        <div class="section-count" id="models-count">{{ models|length }} modèle{{ 's' if models|length != 1 }}</div>
+      <div class="sec-head">
+        <div class="sec-title">Modèles</div>
+        <div class="sec-count" id="sc">{{ models|length }} modèle{{ 's' if models|length != 1 }}</div>
       </div>
-      <div class="models-grid" id="models-grid">
+      <div class="mgrid" id="mg">
         {% if models %}
           {% for m in models %}
-          <div class="model-card" onclick="downloadModel({{ m.id }}, '{{ m.price_type }}')">
-            {% if m.thumbnail %}<img src="/uploads/models/{{ m.thumbnail }}" class="model-thumb" alt="{{ m.name }}">
-            {% else %}<div class="model-thumb-ph">📦</div>{% endif %}
-            <div class="model-info">
-              <div class="model-name">{{ m.name }}</div>
-              <div class="model-author">par {{ m.author }}</div>
-              <div class="model-footer">
-                {% if m.price_type == 'free' %}<span class="badge badge-free">Gratuit</span>
-                {% else %}<span class="badge badge-paid">R$ {{ m.price }}</span>{% endif %}
-                <span class="badge-cat">{{ m.category }}</span>
+          <div class="mc" onclick="dl({{ m.id }},'{{ m.price_type }}')">
+            {% if m.thumbnail %}<img src="/uploads/models/{{ m.thumbnail }}" class="mc-img">
+            {% else %}<div class="mc-ph">📦</div>{% endif %}
+            <div class="mc-info">
+              <div class="mc-name">{{ m.name }}</div>
+              <div class="mc-by">par {{ m.author }}</div>
+              <div class="mc-foot">
+                {% if m.price_type=='free' %}<span class="pill pill-free">Gratuit</span>
+                {% else %}<span class="pill pill-paid">R$ {{ m.price }}</span>{% endif %}
+                <span class="pill pill-cat">{{ m.category }}</span>
               </div>
             </div>
           </div>
           {% endfor %}
         {% else %}
-          <div class="empty"><div class="empty-icon">📦</div><p>Aucun modèle pour l'instant.<br>Sois le premier à publier !</p></div>
+          <div class="empty"><div class="empty-i">📦</div><p>Aucun modèle.<br>Sois le premier !</p></div>
         {% endif %}
       </div>
     </section>
@@ -285,86 +290,57 @@ footer a:hover{color:var(--accent);}
 
 <footer>
   <p>© 2025 Boutique de BeauFort</p>
-  <p style="margin-top:8px"><a href="/privacy">Confidentialité</a><a href="/terms">Conditions</a></p>
+  <p style="margin-top:6px"><a href="/privacy">Confidentialité</a><a href="/terms">Conditions</a></p>
 </footer>
-
 <div id="toast"></div>
+
 <script>
-// ── THEME SYSTEM ──
-const THEMES = {
-  dark:  { icon: '🌙', banner: '' },
-  light: { icon: '☀️', banner: '' },
-  system:{ icon: '⚙️', banner: '' },
-  noel:  { icon: '🎄', banner: '🎄 Joyeux Noël ! Bonnes fêtes à toute la communauté BeauFort ! 🎄' },
-  halloween: { icon: '🎃', banner: '🎃 Bonne nuit des sorcières ! Halloween chez Boutique de BeauFort ! 🎃' },
-  paques: { icon: '🐣', banner: '🐣 Joyeuses Pâques ! Bonne chasse aux oeufs ! 🐣' }
-};
-
-function applyTheme(theme) {
-  let resolved = theme;
-  if (theme === 'system') {
-    resolved = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-  }
-  document.documentElement.setAttribute('data-theme', resolved);
-  // Banner
-  const banner = document.getElementById('seasonal-banner');
-  if (banner) banner.textContent = THEMES[resolved]?.banner || THEMES[theme]?.banner || '';
-  // Active button
-  document.querySelectorAll('.theme-btn').forEach(b => b.classList.remove('active'));
-  const titles = { dark:'Sombre', light:'Clair', system:'Système', noel:'Noël', halloween:'Halloween', paques:'Pâques' };
-  document.querySelectorAll('.theme-btn').forEach(b => {
-    if (b.title === titles[theme]) b.classList.add('active');
-  });
+// THEMES
+const BANNERS={noel:'🎄 Joyeux Noël à toute la communauté BeauFort !',halloween:'🎃 Bonne Halloween — nuit des sorcières chez BeauFort !',paques:'🐣 Joyeuses Pâques ! Bonne chasse aux oeufs !'};
+function applyTheme(t){
+  let r=t==='system'?(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'):t;
+  document.documentElement.setAttribute('data-theme',r);
+  document.getElementById('sb').textContent=BANNERS[r]||'';
+  document.querySelectorAll('.ts-btn').forEach(b=>b.classList.remove('on'));
+  const map={dark:'🌙',light:'☀️',system:'⚙️',noel:'🎄',halloween:'🎃',paques:'🐣'};
+  document.querySelectorAll('.ts-btn').forEach(b=>{if(b.textContent===map[t])b.classList.add('on');});
 }
+function setTheme(t){localStorage.setItem('bft',t);applyTheme(t);}
+window.matchMedia('(prefers-color-scheme:dark)').addEventListener('change',()=>{if(localStorage.getItem('bft')==='system')applyTheme('system');});
+applyTheme(localStorage.getItem('bft')||'dark');
 
-function setTheme(theme) {
-  localStorage.setItem('bf-theme', theme);
-  applyTheme(theme);
-}
-
-// Init theme
-const saved = localStorage.getItem('bf-theme') || 'dark';
-applyTheme(saved);
-
-// System theme listener
-window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
-  if (localStorage.getItem('bf-theme') === 'system') applyTheme('system');
-});
-
-// ── APP ──
-let priceType='free';
-function setPrice(t){priceType=t;document.getElementById('btn-free').className='ptgl'+(t==='free'?' active-free':'');document.getElementById('btn-paid').className='ptgl'+(t==='paid'?' active-paid':'');document.getElementById('price-wrap').style.display=t==='paid'?'block':'none';}
-function setFileName(a,b){const f=document.getElementById(a).files[0];if(f)document.getElementById(b).textContent=f.name;}
-function showMsg(id,text,type){const el=document.getElementById(id);el.textContent=text;el.className='msg '+type;el.style.display='block';setTimeout(()=>el.style.display='none',4000);}
-function toast(text){const t=document.getElementById('toast');t.textContent=text;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3000);}
-async function uploadModel(){
-  const name=document.getElementById('model-name').value.trim();
-  const mf=document.getElementById('model-file').files[0];
-  if(!name){showMsg('upload-msg','Nom requis','err');return;}
-  if(!mf){showMsg('upload-msg','Fichier .rbxmx requis','err');return;}
+// APP
+let pt='free';
+function sp(t){pt=t;document.getElementById('bf').className='ptgl'+(t==='free'?' af':'');document.getElementById('bp').className='ptgl'+(t==='paid'?' ap':'');document.getElementById('pw').style.display=t==='paid'?'block':'none';}
+function sfn(a,b){const f=document.getElementById(a).files[0];if(f)document.getElementById(b).textContent=f.name;}
+function showMsg(id,txt,type){const e=document.getElementById(id);e.textContent=txt;e.className='msg '+type;e.style.display='block';setTimeout(()=>e.style.display='none',4000);}
+function toast(txt){const t=document.getElementById('toast');t.textContent=txt;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3000);}
+async function pub(){
+  const name=document.getElementById('mn').value.trim();
+  const mf=document.getElementById('mf').files[0];
+  if(!name){showMsg('um','Nom requis','err');return;}
+  if(!mf){showMsg('um','Fichier requis','err');return;}
   const fd=new FormData();
-  fd.append('model_name',name);fd.append('description',document.getElementById('model-desc').value);
-  fd.append('category',document.getElementById('model-cat').value);fd.append('price_type',priceType);
-  fd.append('price',document.getElementById('model-price')?.value||'0');fd.append('model_file',mf);
-  const tf=document.getElementById('thumb-file').files[0];if(tf)fd.append('thumbnail',tf);
+  fd.append('model_name',name);fd.append('description',document.getElementById('md').value);
+  fd.append('category',document.getElementById('mc').value);fd.append('price_type',pt);
+  fd.append('price',document.getElementById('mp')?.value||'0');fd.append('model_file',mf);
+  const tf=document.getElementById('tf').files[0];if(tf)fd.append('thumbnail',tf);
   const r=await fetch('/upload_model',{method:'POST',body:fd});const d=await r.json();
-  if(d.success){showMsg('upload-msg','Modele publie !','ok');toast('Modele publie !');addCard(d.model);document.getElementById('model-name').value='';document.getElementById('model-desc').value='';}
-  else showMsg('upload-msg',d.error,'err');
+  if(d.success){showMsg('um','Publie !','ok');toast('Modele publie !');addCard(d.model);document.getElementById('mn').value='';document.getElementById('md').value='';}
+  else showMsg('um',d.error,'err');
 }
 function addCard(m){
-  const grid=document.getElementById('models-grid');
-  const empty=grid.querySelector('.empty');if(empty)empty.remove();
-  const price=m.price_type==='free'?`<span class="badge badge-free">Gratuit</span>`:`<span class="badge badge-paid">R$ ${m.price}</span>`;
-  const thumb=m.thumbnail?`<img src="/uploads/models/${m.thumbnail}" class="model-thumb">`:`<div class="model-thumb-ph">📦</div>`;
-  const card=document.createElement('div');card.className='model-card';
-  card.onclick=()=>downloadModel(m.id,m.price_type);
-  card.innerHTML=`${thumb}<div class="model-info"><div class="model-name">${m.name}</div><div class="model-author">par ${m.author}</div><div class="model-footer">${price}<span class="badge-cat">${m.category}</span></div></div>`;
-  grid.prepend(card);
-  const cnt=grid.querySelectorAll('.model-card').length;
-  document.getElementById('models-count').textContent=cnt+' modele'+(cnt>1?'s':'');
-  document.getElementById('stat-models').textContent=cnt;
+  const g=document.getElementById('mg');const e=g.querySelector('.empty');if(e)e.remove();
+  const price=m.price_type==='free'?`<span class="pill pill-free">Gratuit</span>`:`<span class="pill pill-paid">R$ ${m.price}</span>`;
+  const thumb=m.thumbnail?`<img src="/uploads/models/${m.thumbnail}" class="mc-img">`:`<div class="mc-ph">📦</div>`;
+  const c=document.createElement('div');c.className='mc';c.onclick=()=>dl(m.id,m.price_type);
+  c.innerHTML=`${thumb}<div class="mc-info"><div class="mc-name">${m.name}</div><div class="mc-by">par ${m.author}</div><div class="mc-foot">${price}<span class="pill pill-cat">${m.category}</span></div></div>`;
+  g.prepend(c);
+  const cnt=g.querySelectorAll('.mc').length;
+  document.getElementById('sc').textContent=cnt+' modele'+(cnt>1?'s':'');
+  document.getElementById('sn').textContent=cnt;
 }
-function downloadModel(id,pt){if(pt==='paid'){toast('Modele payant');return;}window.location.href=`/download/${id}`;}
+function dl(id,pt){if(pt==='paid'){toast('Modele payant');return;}window.location.href=`/download/${id}`;}
 </script>
 </body>
 </html>
